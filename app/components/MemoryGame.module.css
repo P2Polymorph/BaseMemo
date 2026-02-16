@@ -1,0 +1,382 @@
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+  color: white;
+  font-family: 'Courier New', monospace;
+  padding: 1rem;
+}
+
+.gameBoard {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  background: #1a1a1a;
+  border-radius: 25px;
+  padding: 2rem;
+  box-shadow: 
+    0 0 50px rgba(0, 0, 0, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  border: 2px solid #333;
+}
+
+.gameHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.scoreDisplay, .modeDisplay {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #444;
+}
+
+.scoreLabel, .modeLabel {
+  display: block;
+  font-size: 0.7rem;
+  color: #888;
+  margin-bottom: 0.2rem;
+  letter-spacing: 1px;
+}
+
+.scoreValue, .modeValue {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.buttonContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin: 2rem 0;
+  background: #0f0f0f;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.gameButton {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+.gameButton:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+.gameButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.gameButton.active {
+  transform: scale(1.2);
+  box-shadow: 
+    0 0 30px currentColor,
+    0 0 60px currentColor,
+    inset 0 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.redButton {
+  top: 30px;
+  right: 30px;
+  background: radial-gradient(circle, #ff4444 0%, #cc0000 100%);
+  color: #ff4444;
+}
+
+.yellowButton {
+  top: 30px;
+  left: 30px;
+  background: radial-gradient(circle, #ffdd44 0%, #ccaa00 100%);
+  color: #ffdd44;
+}
+
+.greenButton {
+  bottom: 30px;
+  left: 30px;
+  background: radial-gradient(circle, #44ff44 0%, #00cc00 100%);
+  color: #44ff44;
+}
+
+.blueButton {
+  bottom: 30px;
+  right: 30px;
+  background: radial-gradient(circle, #4444ff 0%, #0000cc 100%);
+  color: #4444ff;
+}
+
+.centralDisplay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #1d4ed8 100%);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 0 20px rgba(59, 130, 246, 0.5),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2);
+  border: 2px solid #60a5fa;
+}
+
+.memoryLogo {
+  text-align: center;
+}
+
+.brainIcon {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.logoText {
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.startScreen {
+  text-align: center;
+}
+
+.startButton {
+  background: linear-gradient(135deg, #f7d954 0%, #f5d73a 100%);
+  color: #000;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(247, 217, 84, 0.4);
+  transition: all 0.3s ease;
+}
+
+.startButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(247, 217, 84, 0.6);
+}
+
+.modeSelector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.modeButton {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: 1px solid #444;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modeButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.activeMode {
+  background: rgba(147, 51, 234, 0.5);
+  border-color: #8b5cf6;
+}
+
+.gameOverScreen {
+  text-align: center;
+}
+
+.gameOverText {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff4444;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.8);
+}
+
+.finalScore {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.gameOverActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.playAgainButton, .saveScoreButton {
+  background: linear-gradient(135deg, #44ff44 0%, #00cc00 100%);
+  color: #000;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.saveScoreButton {
+  background: linear-gradient(135deg, #4444ff 0%, #0000cc 100%);
+  color: #fff;
+}
+
+.playAgainButton:hover, .saveScoreButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(68, 255, 68, 0.4);
+}
+
+.saveScoreButton:hover {
+  box-shadow: 0 4px 15px rgba(68, 68, 255, 0.4);
+}
+
+.gameStatus {
+  font-size: 0.8rem;
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.leaderboardSection {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.leaderboardToggle {
+  background: linear-gradient(135deg, #f7d954 0%, #f5d73a 100%);
+  color: #000;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(247, 217, 84, 0.4);
+  transition: all 0.3s ease;
+}
+
+.leaderboardToggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(247, 217, 84, 0.6);
+}
+
+.leaderboard {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #444;
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.leaderboardTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #f7d954;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.leaderboardList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.leaderboardItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rank {
+  font-weight: bold;
+  color: #f7d954;
+  font-size: 0.9rem;
+}
+
+.player {
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.score {
+  font-weight: bold;
+  color: #44ff44;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .gameBoard {
+    padding: 1rem;
+    max-width: 350px;
+  }
+  
+  .buttonContainer {
+    height: 300px;
+  }
+  
+  .gameButton {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .centralDisplay {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .brainIcon {
+    font-size: 1.5rem;
+  }
+  
+  .logoText {
+    font-size: 0.8rem;
+  }
+}

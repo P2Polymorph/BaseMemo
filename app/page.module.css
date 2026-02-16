@@ -1,0 +1,325 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: radial-gradient(circle at top, #1a1a2e 0%, #050509 45%, #000000 100%);
+  color: #ffffff;
+  position: relative;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.gameLayout {
+  display: flex;
+  gap: 1.75rem;
+  width: min(1000px, 100%);
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .gameLayout {
+    flex-direction: row;
+  }
+}
+
+.gameWrapper {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.board {
+  position: relative;
+  width: min(400px, 100%);
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  border-radius: 32px;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.7),
+    inset 0 0 20px rgba(255, 255, 255, 0.05),
+    0 0 0 4px #333;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #444;
+}
+
+.pad {
+  position: absolute;
+  width: 44%;
+  height: 44%;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 
+    inset 0 0 0 4px rgba(0, 0, 0, 0.6), 
+    0 10px 18px rgba(0, 0, 0, 0.7),
+    0 0 0 2px rgba(255, 255, 255, 0.1);
+  filter: brightness(0.55);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.08s ease;
+}
+
+.padYellow {
+  top: 3%;
+  left: 3%;
+  background: radial-gradient(circle at 25% 25%, #fff5a5, #ffcc33);
+}
+
+.padRed {
+  top: 3%;
+  right: 3%;
+  background: radial-gradient(circle at 25% 25%, #ffd1d1, #ff3b3b);
+}
+
+.padGreen {
+  bottom: 3%;
+  left: 3%;
+  background: radial-gradient(circle at 25% 25%, #d7ffd7, #00b56a);
+}
+
+.padBlue {
+  bottom: 3%;
+  right: 3%;
+  background: radial-gradient(circle at 25% 25%, #d5f0ff, #0088ff);
+}
+
+.padActive {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.7);
+  box-shadow: 
+    0 0 40px currentColor,
+    0 0 80px currentColor,
+    inset 0 0 0 4px rgba(0, 0, 0, 0.6),
+    0 10px 18px rgba(0, 0, 0, 0.7),
+    0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.centerDisplay {
+  position: absolute;
+  width: 45%;
+  height: 45%;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #6b46c1 0%, #9333ea 50%, #7c3aed 100%);
+  box-shadow: 
+    0 0 30px rgba(147, 51, 234, 0.6),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2),
+    0 0 0 3px rgba(139, 92, 246, 0.3);
+  border: 2px solid #8b5cf6;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.logoText {
+  font-family: var(--font-source-code-pro), monospace;
+  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #f4e6ff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.3rem;
+}
+
+.brainIcon {
+  font-size: 1.8rem;
+  margin-bottom: 0.2rem;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+.scoreRow,
+.statusRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #f9f5ff;
+}
+
+.statusRow {
+  opacity: 0.9;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.primaryButton,
+.secondaryButton,
+.saveButton {
+  border-radius: 999px;
+  border: none;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #f7d954, #ffb347);
+  color: #000;
+  box-shadow: 0 8px 22px rgba(247, 217, 84, 0.4);
+}
+
+.primaryButton:disabled {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+}
+
+.primaryButton:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(247, 217, 84, 0.55);
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.06);
+  color: #f5f5f5;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.message {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  min-height: 1.2em;
+}
+
+.gameOverPanel {
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.gameOverTitle {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.gameOverScore {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.saveButton {
+  background: linear-gradient(135deg, #4fffd2, #37b1ff);
+  color: #001018;
+  white-space: nowrap;
+}
+
+.saveButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+}
+
+.leaderboard {
+  flex: 1.3;
+  background: linear-gradient(145deg, rgba(35, 35, 58, 0.95), rgba(6, 6, 18, 0.98));
+  border-radius: 28px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.leaderboardTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.leaderboardHint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.leaderboardList {
+  list-style: none;
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0;
+}
+
+.leaderboardItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.6rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.rank {
+  font-weight: 600;
+  width: 2.2rem;
+}
+
+.address {
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.leaderboardScore {
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .leaderboard {
+    margin-top: 0.5rem;
+  }
+
+  .board {
+    width: min(320px, 100%);
+  }
+}
