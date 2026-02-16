@@ -42,7 +42,7 @@ export default function MemoryGame() {
   const [gameOver, setGameOver] = useState(false);
   const [synth, setSynth] = useState<Tone.Synth | null>(null);
   const [leaderboardOpen, setLeaderboardOpen] = useState(false);
-  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
+  const [leaderboard] = useState<LeaderboardEntry[]>([]);
   const [audioStatus, setAudioStatus] = useState<string>('initializing');
 
   useEffect(() => {
@@ -182,10 +182,6 @@ export default function MemoryGame() {
       setScore(newScore);
       setTimeout(() => nextRound(sequence), 900);
     }
-  };
-
-  const toggleMode = () => {
-    setGameMode((prev) => (prev === 'sound' ? 'silent' : 'sound'));
   };
 
   return (
