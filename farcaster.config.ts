@@ -13,6 +13,7 @@ export const farcasterConfig = {
     payload: "",
     signature: ""
   },
+  appId: "69932c0a7ca07f5750bbdba7",
   miniapp: {
     version: "1",
     name: "Base Memory", 
